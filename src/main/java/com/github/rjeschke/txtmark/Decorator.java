@@ -470,4 +470,6 @@ public interface Decorator
      *            The StringBuilder to write to.
      */
     public void closeImage(final StringBuilder out);
+
+    public void appendImageLink(final StringBuilder out, String link);
 }

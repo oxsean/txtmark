@@ -351,7 +351,9 @@ class Emitter
         {
             this.config.decorator.openImage(out);
             out.append(" src=\"");
-            Utils.appendValue(out, link, 0, link.length());
+            StringBuilder linkSb = new StringBuilder(link.length() + 16);
+            Utils.appendValue(linkSb, link, 0, link.length());
+            this.config.decorator.appendImageLink(out, linkSb.toString());
             out.append("\" alt=\"");
             Utils.appendValue(out, name, 0, name.length());
             out.append('"');

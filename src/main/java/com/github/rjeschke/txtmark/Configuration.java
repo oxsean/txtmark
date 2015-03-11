@@ -29,6 +29,7 @@ public class Configuration
     final BlockEmitter codeBlockEmitter;
     final boolean forceExtendedProfile;
     final SpanEmitter specialLinkEmitter;
+    final boolean disableCodeBlock;
 
     /**
      * <p>
@@ -67,7 +68,7 @@ public class Configuration
      * @param decorator
      */
     Configuration(boolean safeMode, String encoding, Decorator decorator, BlockEmitter codeBlockEmitter,
-            boolean forceExtendedProfile, SpanEmitter specialLinkEmitter)
+            boolean forceExtendedProfile, SpanEmitter specialLinkEmitter, boolean disableCodeBlock)
     {
         this.safeMode = safeMode;
         this.encoding = encoding;
@@ -75,6 +76,7 @@ public class Configuration
         this.codeBlockEmitter = codeBlockEmitter;
         this.forceExtendedProfile = forceExtendedProfile;
         this.specialLinkEmitter = specialLinkEmitter;
+        this.disableCodeBlock = disableCodeBlock;
     }
 
     /**
@@ -101,6 +103,7 @@ public class Configuration
         private Decorator decorator = new DefaultDecorator();
         private BlockEmitter codeBlockEmitter = null;
         private SpanEmitter specialLinkEmitter = null;
+        private boolean disableCodeBlock = false;
 
         /**
          * Constructor.
@@ -217,6 +220,11 @@ public class Configuration
             return this;
         }
 
+        public Builder setDisableCodeBlock(boolean disableCodeBlock) {
+            this.disableCodeBlock = disableCodeBlock;
+            return this;
+        }
+
         /**
          * Builds a configuration instance.
          * 
@@ -226,7 +234,7 @@ public class Configuration
         public Configuration build()
         {
             return new Configuration(this.safeMode, this.encoding, this.decorator, this.codeBlockEmitter,
-                    this.forceExtendedProfile, this.specialLinkEmitter);
+                    this.forceExtendedProfile, this.specialLinkEmitter, this.disableCodeBlock);
         }
     }
 }

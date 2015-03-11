@@ -241,4 +241,9 @@ public class DefaultDecorator implements Decorator
     {
         out.append(" />");
     }
+
+    @Override
+    public void appendImageLink(StringBuilder out, String link) {
+        out.append(link);
+    }
 }
